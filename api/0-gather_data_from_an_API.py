@@ -45,7 +45,7 @@ def to_do(employee_ID):
 
     for task in todos_data:
         if task['completed']:
-            print("\t{}".format(task['title']))
+            print("\t {}".format(task['title']))
 
 
 if __name__ == "__main__":
