@@ -48,8 +48,15 @@ def to_do(employee_ID):
 
     csv_filename = f"{employee_ID}.csv"
     with open(csv_filename, mode='w') as file:
-        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(file, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        fieldnames = [
+            "USER_ID",
+            "USERNAME",
+            "TASK_COMPLETED_STATUS",
+            "TASK_TITLE"
+        ]
+        writer = csv.DictWriter(file,
+                                fieldnames=fieldnames,
+                                quoting=csv.QUOTE_ALL)
 
         for task in todos_data:
             writer.writerow({
