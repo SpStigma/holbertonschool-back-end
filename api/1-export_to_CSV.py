@@ -28,7 +28,7 @@ def to_do(employee_ID):
     employee_data = employee_response.json()
 
     if employee_response.status_code == 200:
-        employee_name = employee_data.get('name')
+        employee_name = employee_data.get('username')
 
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
@@ -47,17 +47,16 @@ def to_do(employee_ID):
             print("\t {}".format(task['title']))
 
     csv_filename = f"{employee_ID}.csv"
-    with open(csv_filename, mode='w', newline='') as csv_file:
+    with open(csv_filename, mode='w') as file:
         fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer = csv.DictWriter(file, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
 
-        writer.writeheader()
         for task in todos_data:
             writer.writerow({
                 "USER_ID": employee_ID,
                 "USERNAME": employee_name,
-                "TASK_COMPLETED_STATUS": task['completed'],
-                "TASK_TITLE": task['title']
+                "TASK_COMPLETED_STATUS": task["completed"],
+                "TASK_TITLE": task["title"]
             })
 
     print(f"Data exported to {csv_filename}")
