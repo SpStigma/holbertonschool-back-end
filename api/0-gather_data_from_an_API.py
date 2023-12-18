@@ -38,7 +38,8 @@ def to_do(employee_ID):
     for task in todos_data:
         completed_tasks += task['completed']
 
-    print("Employee {} is done with tasks({}/{}):".format(employee_name, completed_tasks, total_tasks))
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employee_name, completed_tasks, total_tasks))
 
     for task in todos_data:
         if task['completed']:
