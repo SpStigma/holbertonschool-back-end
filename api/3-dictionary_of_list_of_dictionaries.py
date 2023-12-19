@@ -3,8 +3,8 @@
 Fetches user and todo data from JSONPlaceholder and creates a JSON file
 containing tasks for each user.
 """
-import requests
 import json
+import requests
 
 
 def list_dic():
